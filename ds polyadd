@@ -1,0 +1,111 @@
+#include<stdio.h>
+void main()
+{
+    int a[50],b[50],c[50],p,q,r,i,ch,cont=1,m,n;
+    while(cont==1)
+   {
+        printf(" MENU\n");
+        printf(" 1.poly \n");
+        printf(" 2.add poly \n");
+        printf(" 3.display sum\n");
+        printf("\nenter your choice");
+        scanf("%d",&ch);
+        
+        if(ch==1)
+        {
+         printf("enter elements in poly 1");
+         scanf("%d",&m);
+         a[0]=m;
+         for(i=0;i<=2*m;i++)
+         {
+         if(i%2!=0)
+         {
+             printf("enter exp");
+         }
+         else
+         {
+             printf("enter coeiff of element x^%d",a[i-1]);
+         }
+             scanf("%d",&a[i]);
+         }
+         
+             printf("enter number of elements in poly 2");
+             scanf("%d",&n);
+             b[0]=n;
+             for(i=0;i<=2*n;i++)
+             {
+             if(i%2!=0)
+             {
+                 printf("enter coeiff");
+             }
+             else
+             {
+             printf("enter coeiif of x^%d",a[i-1]);
+             }
+             scanf("%d",&b[i]);
+             
+            }
+        }
+        
+        else if(ch==2)
+        {
+         printf("adding");
+         p=q=r=1;
+         while(p<=2*m && q<= 2*n)
+         {
+             if(a[p]=b[q])
+             {
+                 c[r+1]=a[p+1]+b[q+1];
+                 if(c[r+1]!=0)
+                 {
+                     c[r]=a[p];
+                     r=r+2;
+                     p=p+2;
+                     q=q+2;
+                 }
+                
+             }
+             else if(a[p]>b[q])
+             {
+                 c[r+1]=a[p+1];
+                 c[r]=a[p];
+                 p=p+2;
+                 r=r+2;
+             }
+             else if(a[p]<b[q])
+             {
+                 c[r+1]=b[q+1];
+                 r=r+2;
+                 q=q+2;
+             }
+         }
+         while(p<=2*m)
+         {
+             c[r+1]=a[p+1];
+             c[r]=a[p];
+             r=r+2;
+             p=p+2;
+         }
+         while(q<=2*n)
+         {
+           c[r+1]=b[q+1];
+           c[r]=b[q];
+           r=r+2;
+           q=q+2;
+         }
+         c[0]=r/2;
+        }
+        else if(ch==3)
+        {
+            printf("/n POLYNOMIAL /n");
+            for(i=0;i<=r;i++)
+            {
+                printf("%d\t",c[i]);
+                printf("\n");
+            }
+        }
+        else
+        break;
+        printf("\n");        
+        }
+}
